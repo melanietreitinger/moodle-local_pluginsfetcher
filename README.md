@@ -1,22 +1,20 @@
 # Moodle Plugins Fetcher
 
-[![Latest Version](https://img.shields.io/github/v/release/lucaboesch/moodle-local_pluginsfetcher)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/releases)
-[![PHP Support](https://img.shields.io/badge/PHP-7.4%20--%208.4-blue)](https://github.com/lucaboesch/moodle-local_pluginsfetcher)
-[![Moodle Support](https://img.shields.io/badge/Moodle-4.1%20--%205.0-orange)](https://github.com/lucaboesch/moodle-local_pluginsfetcher)
-[![GitHub Workflow Status: Moodle Plugin CI](https://img.shields.io/github/actions/workflow/status/lucaboesch/moodle-local_pluginsfetcher/moodle-plugin-ci.yml?label=Moodle%20Plugin%20CI)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/actions/workflows/moodle-plugin-ci.yml)
-[![Code Coverage](https://img.shields.io/coverallsCoverage/github/lucaboesch/moodle-local_pluginsfetcher)](https://coveralls.io/github/lucaboesch/moodle-local_pluginsfetcher)
-[![GitHub Issues](https://img.shields.io/github/issues/lucaboesch/moodle-local_pluginsfetcher)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lucaboesch/moodle-local_pluginsfetcher)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/pulls)
-[![Maintenance Status](https://img.shields.io/maintenance/yes/9999)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/)
-[![License](https://img.shields.io/github/license/lucaboesch/moodle-local_pluginsfetcher)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/blob/master/LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/lucaboesch/moodle-local_pluginsfetcher?style=social)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/lucaboesch/moodle-local_pluginsfetcher?style=social)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/network/members)
-[![GitHub Contributors](https://img.shields.io/github/contributors/lucaboesch/moodle-local_pluginsfetcher?style=social)](https://github.com/lucaboesch/moodle-local_pluginsfetcher/graphs/contributors)
+[![Latest Version](https://img.shields.io/github/v/release/ffhs/moodle-local_pluginsfetcher)](https://github.com/ffhs/moodle-local_pluginsfetcher/releases)
+[![PHP Support](https://img.shields.io/badge/PHP-7.4%20--%208.4-blue)](https://github.com/ffhs/moodle-local_pluginsfetcher)
+[![Moodle Support](https://img.shields.io/badge/Moodle-4.1%20--%205.0-orange)](https://github.com/ffhs/moodle-local_pluginsfetcher)
+[![GitHub Workflow Status: Moodle Plugin CI](https://img.shields.io/github/actions/workflow/status/ffhs/moodle-local_pluginsfetcher/moodle-plugin-ci.yml?label=Moodle%20Plugin%20CI)](https://github.com/ffhs/moodle-local_pluginsfetcher/actions/workflows/moodle-plugin-ci.yml)
+[![Code Coverage](https://img.shields.io/coverallsCoverage/github/ffhs/moodle-local_pluginsfetcher)](https://coveralls.io/github/ffhs/moodle-local_pluginsfetcher)
+[![GitHub Issues](https://img.shields.io/github/issues/ffhs/moodle-local_pluginsfetcher)](https://github.com/ffhs/moodle-local_pluginsfetcher/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ffhs/moodle-local_pluginsfetcher)](https://github.com/ffhs/moodle-local_pluginsfetcher/pulls)
+[![Maintenance Status](https://img.shields.io/maintenance/yes/9999)](https://github.com/ffhs/moodle-local_pluginsfetcher/)
+[![License](https://img.shields.io/github/license/ffhs/moodle-local_pluginsfetcher)](https://github.com/ffhs/moodle-local_pluginsfetcher/blob/master/LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/ffhs/moodle-local_pluginsfetcher?style=social)](https://github.com/ffhs/moodle-local_pluginsfetcher/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/ffhs/moodle-local_pluginsfetcher?style=social)](https://github.com/ffhs/moodle-local_pluginsfetcher/network/members)
+[![GitHub Contributors](https://img.shields.io/github/contributors/ffhs/moodle-local_pluginsfetcher?style=social)](https://github.com/ffhs/moodle-local_pluginsfetcher/graphs/contributors)
 
 This plugin allows to share information about installed plugins and software versions via a secure Moodle webservice
 endpoint.
-
-TODO TODO TODO TODO TODO
 
 
 ## Configuration and Usage
@@ -178,7 +176,7 @@ Alternatively, you can run `php admin/cli/upgrade.php` from the command line to 
 
 ## Reporting a bug or requesting a feature
 
-If you find a bug or have a feature request, please open an issue via the [GitHub issue tracker](https://github.com/locaboesch/moodle-local_pluginsfetcher/issues).
+If you find a bug or have a feature request, please open an issue via the [GitHub issue tracker](https://github.com/ffhs/moodle-local_pluginsfetcher/issues).
 
 Please do not use the comments section within the Moodle plugin directory. Thanks :)
 
@@ -187,6 +185,10 @@ Please do not use the comments section within the Moodle plugin directory. Thank
 
 You can find testing instructions for developers in the [TESTING.md](TESTING.md) file.
 
+## Acknowledgements
+A big thank you to everyone who contributed to this project:
+
+- @lucaboesch and @ngandrass - for the plugin overhaul and API extension
 
 ## License
 
