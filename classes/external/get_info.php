@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die(); // @codeCoverageIgnore
 
 
 // TODO (MDL-0): Remove after deprecation of Moodle 4.1 (LTS) on 08-12-2025.
-require_once($CFG->dirroot.'/local/pluginsfetcher/patch_401_class_renames.php'); // @codeCoverageIgnore
+require_once($CFG->dirroot . '/local/pluginsfetcher/patch_401_class_renames.php'); // @codeCoverageIgnore
 
 use core_external\external_api;
 use core_external\external_description;
@@ -41,7 +41,6 @@ use core_external\external_value;
  * API endpoint to get plugin and software insights.
  */
 class get_info extends external_api {
-
     /**
      * Returns description of method parameters
      *
@@ -242,5 +241,4 @@ class get_info extends external_api {
 
         return $res;
     }
-
 }

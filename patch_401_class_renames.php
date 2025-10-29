@@ -31,10 +31,11 @@ defined('MOODLE_INTERNAL') || die(); // @codeCoverageIgnore
 global $CFG;
 
 if ($CFG->branch <= 401) {
-    require_once($CFG->dirroot.'/lib/external/externallib.php');
+    require_once($CFG->dirroot . '/lib/external/externallib.php');
 
     // Patch renamed classes.
-    foreach ([
+    foreach (
+        [
         // External API.
         'external_api' => 'core_external\external_api',
         'external_description' => 'core_external\external_description',
@@ -48,7 +49,8 @@ if ($CFG->branch <= 401) {
         'external_value' => 'core_external\external_value',
         'external_warnings' => 'core_external\external_warnings',
         'restricted_context_exception' => 'core_external\restricted_context_exception',
-    ] as $old => $new) {
+        ] as $old => $new
+    ) {
         if (class_exists($old)) {
             class_alias($old, $new);
         }

@@ -29,7 +29,6 @@ namespace local_pluginsfetcher\external;
  * Tests for the get_info external service
  */
 final class get_info_test extends \advanced_testcase {
-
     /**
      * Test that users without the required capabilities are rejected
      *
@@ -106,5 +105,4 @@ final class get_info_test extends \advanced_testcase {
         $this->assertArrayHasKey('pluginstats', $result, 'The result should contain a "pluginstats" key.');
         $this->assertArrayHasKey('software', $result, 'The result should contain a "software" key.');
     }
-
 }

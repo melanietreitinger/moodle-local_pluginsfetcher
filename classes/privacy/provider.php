@@ -34,7 +34,6 @@ defined('MOODLE_INTERNAL') || die(); // @codeCoverageIgnore
  * @codeCoverageIgnore This is handled by Moodle core tests
  */
 class provider implements \core_privacy\local\metadata\null_provider {
-
     /**
      * Get the language string identifier with the component's language
      * file to explain why this plugin stores no data.
@@ -44,5 +43,4 @@ class provider implements \core_privacy\local\metadata\null_provider {
     public static function get_reason(): string {
         return 'privacy:metadata';
     }
-
 }

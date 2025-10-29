@@ -29,7 +29,6 @@ namespace local_pluginsfetcher;
  * A unit test suite for the collector class
  */
 final class collector_test extends \advanced_testcase {
-
     /**
      * Basic unit test for the get_plugin_stats method
      *
@@ -140,5 +139,4 @@ final class collector_test extends \advanced_testcase {
         $this->assertSame($CFG->dbtype, $softwarestats['db']['type'], 'Database type does not match.');
         $this->assertSame(PHP_OS, $softwarestats['os']['name'], 'OS name does not match.');
     }
-
 }

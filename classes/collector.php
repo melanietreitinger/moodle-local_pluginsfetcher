@@ -32,7 +32,6 @@ defined('MOODLE_INTERNAL') || die(); // @codeCoverageIgnore
  * Collects plugin statistics and software version information.
  */
 class collector {
-
     /**
      * Gathers statistics about installed plugins and their versions.
      *
@@ -124,5 +123,4 @@ class collector {
             ],
         ];
     }
-
 }
