@@ -89,7 +89,7 @@ class get_info extends external_api {
                             VALUE_REQUIRED
                         ),
                         'version' => new external_value(
-                            PARAM_INT,
+                            PARAM_TEXT,
                             'Version number of the installed plugin (e.g., 2025010100) from the database',
                             VALUE_REQUIRED
                         ),
