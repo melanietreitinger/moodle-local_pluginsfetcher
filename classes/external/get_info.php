@@ -149,7 +149,7 @@ class get_info extends external_api {
                     'moodle' => new external_single_structure(
                         [
                             'version' => new external_value(
-                                PARAM_INT,
+                                PARAM_TEXT,
                                 'Moodle version number (e.g., 2022112800)',
                                 VALUE_REQUIRED
                             ),
