@@ -17,6 +17,11 @@
 /**
  * local_pluginsfetcher - Prometheus endpoint
  *
+ * Usage:
+ *  - GET /local/pluginsfetcher/prometheus.php?token=[token]
+ *  - GET /local/pluginsfetcher/prometheus.php?token=[token]&type=[type1,type2,...]
+ *  - GET /local/pluginsfetcher/prometheus.php?token=[token]&contribonly=1
+ *
  * @package    local_pluginsfetcher
  * @copyright  2026 Melanie Treitinger <melanie.treitinger@ruhr-uni-bochum.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -68,9 +73,41 @@ if ('' !== $expectedtoken) {
     }
 }
 
-// Get the plugin stats and software stats.
+// Read and validate the optional plugin filters.
+$typeparameter = optional_param('type', '', PARAM_RAW_TRIMMED);
+$contribonly = optional_param('contribonly', false, PARAM_BOOL);
+$types = $typeparameter === ''
+    ? []
+    : array_values(array_unique(array_map('strtolower', array_map('trim', explode(',', $typeparameter)))));
+$validplugintypes = array_keys(\core_component::get_plugin_types());
+
+foreach ($types as $type) {
+    if (!in_array($type, $validplugintypes, true)) {
+        http_response_code(400);
+        echo 'Invalid plugin type';
+        exit;
+    }
+}
+
+// Get the filtered plugin stats and software stats.
 try {
-    $pluginstats = \local_pluginsfetcher\collector::get_plugin_stats();
+    $pluginstats = [
+        'stats' => [
+            'total' => 0,
+            'standard' => 0,
+            'contrib' => 0,
+        ],
+        'plugins' => [],
+    ];
+
+    foreach ($types ?: [null] as $type) {
+        $filteredstats = \local_pluginsfetcher\collector::get_plugin_stats($type, $contribonly);
+        foreach ($filteredstats['stats'] as $category => $value) {
+            $pluginstats['stats'][$category] += $value;
+        }
+        $pluginstats['plugins'] += $filteredstats['plugins'];
+    }
+
     $softwarestats = \local_pluginsfetcher\collector::get_software_stats();
     echo \local_pluginsfetcher\exporter::export($pluginstats, $softwarestats);
 } catch (\moodle_exception $e) {
