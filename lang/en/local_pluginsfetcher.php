@@ -32,3 +32,12 @@ $string['pluginname'] = 'Plugins fetcher';
 
 // Privacy.
 $string['privacy:metadata'] = 'The Plugins fetcher does not store any personal data. It only exposes information that is stored in other parts of the system.';
+
+// Settings.
+$string['settings:show_software_stats'] = 'Include software statistics';
+$string['settings:show_software_stats_desc'] = 'Whether Moodle version, PHP version, database and operating system information is included.';
+$string['settings:show_plugin_versions'] = 'Include plugin version information';
+$string['settings:show_plugin_versions_desc'] = 'Whether the following information about a plugin is included in the plugin data: version, release, requires, supported, status.';
+$string['settings:excluded_plugins'] = 'Excluded plugins or plugin types';
+$string['settings:excluded_plugins_desc'] = 'List of plugins or plugin types to exclude from the result, 
+for example `local_pluginsfetcher` or `local_*`.<br />One entry per line.';

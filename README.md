@@ -48,6 +48,16 @@ To start using the plugin, you need to:
 > php local/pluginsfetcher/cli/webservicesetup.php
 > ```
 
+### Plugin settings
+
+The plugin settings are available under _Site administration > Plugins > Local plugins > Plugins fetcher_:
+
+- **Include software statistics** controls whether Moodle, PHP, database and operating system information is returned.
+- **Include plugin versions** controls whether version-related plugin fields such as `version`, `release`, `requires`,
+  `supported` and `status` are returned.
+- **Excluded plugins and plugin types** accepts one component pattern per line, for example `local_pluginsfetcher` for
+  one plugin or `local_*` for all local plugins.
+
 ### Example usage
 ```
 curl "http://moodle.example.com/webservice/rest/server.php?wstoken=XXXXXXXXXXXX&wsfunction=local_pluginsfetcher_get_info&moodlewsrestformat=json"

@@ -65,23 +65,32 @@ class collector {
 
             // Retrieve info for each plugin of this type.
             foreach ($pluginsoftype as $curname => $plugin) {
+                if (self::is_excluded_plugin($plugin->component)) {
+                    continue;
+                }
+
                 // Filter out standard plugins if requested.
                 if ($contribonly && $plugin->is_standard()) {
                     continue;
                 }
 
                 // Add plugin info.
-                $res['plugins'][$plugin->component] = [
+                $plugininfo = [
                     'type' => $plugin->type,
                     'name' => $plugin->name,
                     'displayname' => $plugin->displayname,
-                    'version' => $plugin->versiondb,
-                    'release' => $plugin->release,
-                    'requires' => $plugin->versionrequires,
-                    'supported' => $plugin->pluginsupported ?? [],
                     'isstandard' => $plugin->is_standard(),
-                    'status' => $plugin->get_status(),
                 ];
+                if (self::is_plugin_version_enabled()) {
+                    $plugininfo += [
+                        'version' => $plugin->versiondb,
+                        'release' => $plugin->release,
+                        'requires' => $plugin->versionrequires,
+                        'supported' => $plugin->pluginsupported ?? [],
+                        'status' => $plugin->get_status(),
+                    ];
+                }
+                $res['plugins'][$plugin->component] = $plugininfo;
 
                 // Update stats.
                 $res['stats']['total']++;
@@ -104,6 +113,10 @@ class collector {
     public static function get_software_stats(): array {
         global $CFG;
 
+        if (!self::is_software_stats_enabled()) {
+            return [];
+        }
+
         return [
             'moodle' => [
                 'version' => $CFG->version,
@@ -122,5 +135,41 @@ class collector {
                 'family' => PHP_OS_FAMILY,
             ],
         ];
+    }
+
+    /**
+     * Checks whether a plugin matches a configured exclusion pattern.
+     *
+     * @param string $component Plugin component name.
+     * @return bool
+     */
+    private static function is_excluded_plugin(string $component): bool {
+        $configured = (string) get_config('local_pluginsfetcher', 'excluded_plugins');
+        // Split by newlines and trim whitespace.
+        $patterns = array_filter(array_map('trim', preg_split('/\R/', trim($configured), -1, PREG_SPLIT_NO_EMPTY)));
+        foreach ($patterns as $pattern) {
+            if (fnmatch(strtolower($pattern), strtolower($component))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks whether software statistics should be displayed.
+     * @return bool
+     */
+    private static function is_software_stats_enabled(): bool {
+        $value = get_config('local_pluginsfetcher', 'show_software_stats');
+        return $value === false || (bool) $value;
+    }
+
+    /**
+     * Checks whether plugin version information should be displayed.
+     * @return bool
+     */
+    private static function is_plugin_version_enabled(): bool {
+        $value = get_config('local_pluginsfetcher', 'show_plugin_versions');
+        return $value === false || (bool) $value;
     }
 }
