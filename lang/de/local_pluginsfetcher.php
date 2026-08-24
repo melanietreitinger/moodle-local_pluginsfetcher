@@ -32,3 +32,7 @@ $string['pluginname'] = 'Plugins fetcher';
 
 // Privacy.
 $string['privacy:metadata'] = 'Der Plugins fetcher speichert keine personenbezogenen Daten. Er stellt lediglich Informationen bereit, die in anderen Teilen des Systems gespeichert sind.';
+
+// Settings.
+$string['settings:token'] = 'Prometheus Token';
+$string['settings:token_desc'] = 'Dieser Token muss beim Aufruf des Prometheus Endpunktes mitgegeben werden.';
