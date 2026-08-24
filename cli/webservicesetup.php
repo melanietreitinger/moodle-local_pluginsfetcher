@@ -27,6 +27,7 @@ define('CLI_SCRIPT', 1);
 require_once(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir  . '/clilib.php');
 require_once($CFG->dirroot . '/lib/externallib.php');
+require_once($CFG->dirroot . '/user/lib.php');
 require_once($CFG->dirroot . '/webservice/lib.php');
 
 // Set the variables for the new webservice.
