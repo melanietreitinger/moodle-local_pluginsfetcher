@@ -76,9 +76,16 @@ if ('' !== $expectedtoken) {
 // Read and validate the optional plugin filters.
 $typeparameter = optional_param('type', '', PARAM_RAW_TRIMMED);
 $contribonly = optional_param('contribonly', false, PARAM_BOOL);
-$types = $typeparameter === ''
-    ? []
-    : array_values(array_unique(array_map('strtolower', array_map('trim', explode(',', $typeparameter)))));
+
+$types = [];
+if ($typeparameter !== '') {
+    $types = explode(',', $typeparameter);
+}
+$types = array_map('trim', $types);
+$types = array_map('strtolower', $types);
+$types = array_unique($types);
+$types = array_values($types);
+
 $validplugintypes = array_keys(\core_component::get_plugin_types());
 
 foreach ($types as $type) {
@@ -100,6 +107,7 @@ try {
         'plugins' => [],
     ];
 
+    // Process the requested plugin types, or all types (=null) when no filter was provided (?: checks if $types is empty).
     foreach ($types ?: [null] as $type) {
         $filteredstats = \local_pluginsfetcher\collector::get_plugin_stats($type, $contribonly);
         foreach ($filteredstats['stats'] as $category => $value) {
@@ -107,8 +115,9 @@ try {
         }
         $pluginstats['plugins'] += $filteredstats['plugins'];
     }
-
+    // Get software stats.
     $softwarestats = \local_pluginsfetcher\collector::get_software_stats();
+    // Output of pluginstats and softwarestats.
     echo \local_pluginsfetcher\exporter::export($pluginstats, $softwarestats);
 } catch (\moodle_exception $e) {
     debugging("Failed to collect Prometheus metrics: {$e->getMessage()}");

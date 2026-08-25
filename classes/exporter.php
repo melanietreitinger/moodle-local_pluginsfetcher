@@ -57,31 +57,37 @@ class exporter {
                 'type' => $plugin['type'],
                 'name' => $plugin['name'],
                 'displayname' => $plugin['displayname'],
-                'version' => $plugin['version'],
-                'release' => $plugin['release'],
-                'requires' => $plugin['requires'],
-                'supported' => implode(',', $plugin['supported']),
-                'status' => $plugin['status'],
                 'isstandard' => $plugin['isstandard'] ? 'true' : 'false',
             ];
+            if (array_key_exists('version', $plugin)) {
+                $labels += [
+                    'version' => $plugin['version'],
+                    'release' => $plugin['release'],
+                    'requires' => $plugin['requires'],
+                    'supported' => implode(',', $plugin['supported']),
+                    'status' => $plugin['status'],
+                ];
+            }
             $lines[] = self::format_value('local_pluginsfetcher_plugin_info', 1, $labels);
         }
 
-        $lines[] = '# HELP local_pluginsfetcher_moodle_info Moodle installation information.';
-        $lines[] = '# TYPE local_pluginsfetcher_moodle_info gauge';
-        $lines[] = self::format_value('local_pluginsfetcher_moodle_info', 1, $softwarestats['moodle']);
+        if ($softwarestats) {
+            $lines[] = '# HELP local_pluginsfetcher_moodle_info Moodle installation information.';
+            $lines[] = '# TYPE local_pluginsfetcher_moodle_info gauge';
+            $lines[] = self::format_value('local_pluginsfetcher_moodle_info', 1, $softwarestats['moodle']);
 
-        $lines[] = '# HELP local_pluginsfetcher_php_info PHP runtime information.';
-        $lines[] = '# TYPE local_pluginsfetcher_php_info gauge';
-        $lines[] = self::format_value('local_pluginsfetcher_php_info', 1, $softwarestats['php']);
+            $lines[] = '# HELP local_pluginsfetcher_php_info PHP runtime information.';
+            $lines[] = '# TYPE local_pluginsfetcher_php_info gauge';
+            $lines[] = self::format_value('local_pluginsfetcher_php_info', 1, $softwarestats['php']);
 
-        $lines[] = '# HELP local_pluginsfetcher_database_info Database information.';
-        $lines[] = '# TYPE local_pluginsfetcher_database_info gauge';
-        $lines[] = self::format_value('local_pluginsfetcher_database_info', 1, $softwarestats['db']);
+            $lines[] = '# HELP local_pluginsfetcher_database_info Database information.';
+            $lines[] = '# TYPE local_pluginsfetcher_database_info gauge';
+            $lines[] = self::format_value('local_pluginsfetcher_database_info', 1, $softwarestats['db']);
 
-        $lines[] = '# HELP local_pluginsfetcher_os_info Operating system information.';
-        $lines[] = '# TYPE local_pluginsfetcher_os_info gauge';
-        $lines[] = self::format_value('local_pluginsfetcher_os_info', 1, $softwarestats['os']);
+            $lines[] = '# HELP local_pluginsfetcher_os_info Operating system information.';
+            $lines[] = '# TYPE local_pluginsfetcher_os_info gauge';
+            $lines[] = self::format_value('local_pluginsfetcher_os_info', 1, $softwarestats['os']);
+        }
 
         return implode("\n", $lines) . "\n";
     }
