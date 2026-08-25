@@ -49,4 +49,13 @@ if ($hassiteconfig) {
         '',
         PARAM_RAW,
     ));
+
+    $settings->add(
+        new admin_setting_configpasswordunmask(
+            'local_pluginsfetcher/prometheus_token',
+            new lang_string('settings:token', 'local_pluginsfetcher'),
+            new lang_string('settings:token_desc', 'local_pluginsfetcher'),
+            '',
+        )
+    );
 }

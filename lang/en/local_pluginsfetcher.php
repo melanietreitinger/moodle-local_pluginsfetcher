@@ -41,3 +41,5 @@ $string['settings:show_plugin_versions_desc'] = 'Whether the following informati
 $string['settings:excluded_plugins'] = 'Excluded plugins or plugin types';
 $string['settings:excluded_plugins_desc'] = 'List of plugins or plugin types to exclude from the result, 
 for example `local_pluginsfetcher` or `local_*`.<br />One entry per line.';
+$string['settings:token'] = 'Prometheus token';
+$string['settings:token_desc'] = 'The token which has to be passed when the Prometheus endpoint is called.';

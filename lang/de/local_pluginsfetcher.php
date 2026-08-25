@@ -41,3 +41,5 @@ $string['settings:show_plugin_versions_desc'] = 'Gibt die folgenden Informatione
 $string['settings:excluded_plugins'] = 'Plugins oder Plugin Typen nicht ausgeben';
 $string['settings:excluded_plugins_desc'] = 'Liste an Plugins oder Plugin Typen, die nicht ausgebenen werden sollen, z.B.
 `local_pluginsfetcher` or `local_*`.<br />Ein Eintrag pro Zeile.';
+$string['settings:token'] = 'Prometheus Token';
+$string['settings:token_desc'] = 'Dieser Token muss beim Aufruf des Prometheus Endpunktes mitgegeben werden.';
