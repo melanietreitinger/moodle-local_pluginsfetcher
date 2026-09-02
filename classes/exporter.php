@@ -71,19 +71,25 @@ class exporter {
             $lines[] = self::format_value('local_pluginsfetcher_plugin_info', 1, $labels);
         }
 
-        if ($softwarestats) {
+        if (isset($softwarestats['moodle'])) {
             $lines[] = '# HELP local_pluginsfetcher_moodle_info Moodle installation information.';
             $lines[] = '# TYPE local_pluginsfetcher_moodle_info gauge';
             $lines[] = self::format_value('local_pluginsfetcher_moodle_info', 1, $softwarestats['moodle']);
+        }
 
+        if (isset($softwarestats['php'])) {
             $lines[] = '# HELP local_pluginsfetcher_php_info PHP runtime information.';
             $lines[] = '# TYPE local_pluginsfetcher_php_info gauge';
             $lines[] = self::format_value('local_pluginsfetcher_php_info', 1, $softwarestats['php']);
+        }
 
+        if (isset($softwarestats['db'])) {
             $lines[] = '# HELP local_pluginsfetcher_database_info Database information.';
             $lines[] = '# TYPE local_pluginsfetcher_database_info gauge';
             $lines[] = self::format_value('local_pluginsfetcher_database_info', 1, $softwarestats['db']);
+        }
 
+        if (isset($softwarestats['os'])) {
             $lines[] = '# HELP local_pluginsfetcher_os_info Operating system information.';
             $lines[] = '# TYPE local_pluginsfetcher_os_info gauge';
             $lines[] = self::format_value('local_pluginsfetcher_os_info', 1, $softwarestats['os']);
